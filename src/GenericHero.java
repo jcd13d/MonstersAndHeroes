@@ -1,6 +1,6 @@
 public class GenericHero extends Hero {
     public GenericHero(String name, double mana, double strength, double agility, double dexterity, double money,
-                       double exp, double hp, double defense, double startExp) {
+                       double exp, double hp, double defense, double startExp, String heroType) {
         setName(name);
         setMana(mana);
         setStrength(strength);
@@ -16,6 +16,7 @@ public class GenericHero extends Hero {
         setLevel(1);
         setCurrentLevelPoints(startExp);
         setNextLevelPoints(startExp * 10);
+        setHeroType(heroType);
     }
 
     public void levelUp() {

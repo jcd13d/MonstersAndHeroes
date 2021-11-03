@@ -11,6 +11,7 @@ public abstract class Hero {
     private double currentLevelPoints;
     private double hp;
     private double defense;
+    private String heroType;
     private Armor appliedArmor;
     private Weapon appliedWeapon;
     protected LevelUpBehavior levelUpBehavior;
@@ -64,6 +65,14 @@ public abstract class Hero {
 
     public void setCurrentLevelPoints(double currentLevelPoints) {
         this.currentLevelPoints = currentLevelPoints;
+    }
+
+    public String getHeroType() {
+        return heroType;
+    }
+
+    public void setHeroType(String heroType) {
+        this.heroType = heroType;
     }
 
     public double getLevel() {
