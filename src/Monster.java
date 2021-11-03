@@ -7,13 +7,14 @@ public class Monster implements BadGuy {
     int defense;
     int dodgeChance;
 
-    public Monster(String name, int hp, int level, int damage, int defense, int dodgeChance) {
+    public Monster(String name, int hp, int level, int damage, int defense, int dodgeChance, String monsterType) {
         this.name = name;
         this.hp = hp;
         this.level = level;
         this.damage = damage;
         this.defense = defense;
         this.dodgeChance = dodgeChance;
+        this.type = monsterType;
     }
 
     public void inflictDamage(int dmg) {
