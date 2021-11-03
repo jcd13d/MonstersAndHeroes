@@ -1,7 +1,7 @@
 public class IceSpellDecorator extends SpellDecorator{
-    int monsterDmgReduction;
+    double monsterDmgReduction;
 
-    public IceSpellDecorator(Spell spell, String spellName, int monsterDmgReduction) {
+    public IceSpellDecorator(Spell spell, String spellName, double monsterDmgReduction) {
         super(spell);
         this.monsterDmgReduction = monsterDmgReduction;
         decoratedSpell.setName(spellName);
@@ -13,11 +13,11 @@ public class IceSpellDecorator extends SpellDecorator{
         monster.reduceDamage(getMonsterDmgReduction());
     }
 
-    public int getMonsterDmgReduction() {
+    public double getMonsterDmgReduction() {
         return monsterDmgReduction;
     }
 
-    public void setMonsterDmgReduction(int monsterDmgReduction) {
+    public void setMonsterDmgReduction(double monsterDmgReduction) {
         // TODO error checking?
         this.monsterDmgReduction = monsterDmgReduction;
     }

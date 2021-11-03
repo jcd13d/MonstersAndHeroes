@@ -1,7 +1,7 @@
 public class FireSpellDecorator extends SpellDecorator{
-    int monsterDefenseReduction;
+    double monsterDefenseReduction;
 
-    public FireSpellDecorator(Spell spell, String spellName, int monsterDefenseReduction) {
+    public FireSpellDecorator(Spell spell, String spellName, double monsterDefenseReduction) {
         super(spell);
         this.monsterDefenseReduction = monsterDefenseReduction;
         decoratedSpell.setName(spellName);
@@ -13,7 +13,7 @@ public class FireSpellDecorator extends SpellDecorator{
         monster.reduceDefense(getMonsterDefenseReduction());
     }
 
-    public int getMonsterDefenseReduction() {
+    public double getMonsterDefenseReduction() {
         return monsterDefenseReduction;
     }
 

@@ -1,7 +1,7 @@
 public class LightningSpellDecorator extends SpellDecorator {
-    int monsterDodgeReduction;
+    double monsterDodgeReduction;
 
-    public LightningSpellDecorator(Spell spell, String spellName, int monsterDodgeReduction) {
+    public LightningSpellDecorator(Spell spell, String spellName, double monsterDodgeReduction) {
         super(spell);
         this.monsterDodgeReduction = monsterDodgeReduction;
         decoratedSpell.setName(spellName);
@@ -13,11 +13,11 @@ public class LightningSpellDecorator extends SpellDecorator {
         monster.reduceDodge(getMonsterDodgeReduction());
     }
 
-    public int getMonsterDodgeReduction() {
+    public double getMonsterDodgeReduction() {
         return monsterDodgeReduction;
     }
 
-    public void setMonsterDodgeReduction(int monsterDodgeReduction) {
+    public void setMonsterDodgeReduction(double monsterDodgeReduction) {
         // TODO error checking?
         this.monsterDodgeReduction = monsterDodgeReduction;
     }
