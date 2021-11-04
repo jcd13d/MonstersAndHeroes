@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class GameBoard {
     private static final int DEFAULT_BOARD_SIZE = 8;
     private int boardRows;
@@ -124,8 +121,26 @@ public class GameBoard {
     public String toString() {
         int cellHeight = 1;
         StringBuilder str = new StringBuilder();
+        str.append(String.format("Heroes at (%s, %s)\n", currentPlayerPosition[0], currentPlayerPosition[0]));
+
+        // print column numbers
+        str.append("    ");
+        for (int j = 0; j < boardCols; j++) {
+            str.append(cBody("" + j));
+        }
+        str.append("|\n");
+
+        // print body of board
+        // for each row
         for (int i=0; i < boardRows; i++) {
+            // for each sub row
             for (int k = 0; k <= cellHeight; k++) {
+                if (k != 0) {
+                    str.append("" + i + "   ");
+                } else {
+                    str.append("    ");
+                }
+                // for each column
                 for (int j = 0; j < boardCols; j++) {
                     if (k == 0) {
                         str.append(hBar());
@@ -136,6 +151,9 @@ public class GameBoard {
                 str.append("|\n");
             }
         }
+
+        // print final closing row
+        str.append("    ");
         for (int i=0; i < boardRows; i++) {
             str.append(hBar());
         }
