@@ -14,14 +14,21 @@ public class Utils {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String str;
 
+        String[] s;
+        int ct = 0;
         while ((str = br.readLine()) != null) {
-            String[] s = str.split("\\s+");
+            if (ct == 0) {
+                s = str.split("/");
+            } else {
+                s = str.split("\\s+");
+            }
             data.add(s);
+            ct++;
         }
 
-//        for (String[] line : data) {
-//            System.out.println(Arrays.toString(line));
-//        }
+        for (String[] line : data) {
+            System.out.println(Arrays.toString(line));
+        }
 
         return data;
     }
