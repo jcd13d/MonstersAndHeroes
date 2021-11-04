@@ -12,6 +12,7 @@ public class BoardCell {
 
     private String boardState;
     private boolean playerCell;
+    private ArrayList<Hero> heroes;
 
     public BoardCell() {
         double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
@@ -55,6 +56,14 @@ public class BoardCell {
         }
 
         return str;
+    }
+
+    public ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public void setHeroes(ArrayList<Hero> heroes) {
+        this.heroes = heroes;
     }
 
     public boolean isPlayerCell() {

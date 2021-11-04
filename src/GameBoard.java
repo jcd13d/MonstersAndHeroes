@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameBoard {
@@ -28,6 +29,41 @@ public class GameBoard {
                 }
             }
         }
+    }
+
+    private boolean rowInBoard(int row) {
+        return (row < boardRows) & (row >= 0);
+    }
+
+    private boolean colInBoard(int col) {
+        return (col < boardCols) & (col >= 0);
+    }
+
+    public boolean moveHeroes(int[] destination) {
+        boolean cellAdjacent = false;
+        // check cell to left if in board, if this cell is dest, true
+        if (rowInBoard(currentPlayerPosition[0] - 1)) {
+            if (((currentPlayerPosition[0] - 1) == destination[0]) & (currentPlayerPosition[1] == destination[1])) {
+                return true;
+            }
+            // check cell to right if in board, if this cell is dest, true
+        } else if (rowInBoard(currentPlayerPosition[0] + 1)) {
+            if (((currentPlayerPosition[0] + 1) == destination[0]) & (currentPlayerPosition[1] == destination[1])) {
+                return true;
+            }
+            // check cell below if in board, if this cell is dest, true
+        } else if (rowInBoard(currentPlayerPosition[1] - 1)) {
+            if (((currentPlayerPosition[1] - 1) == destination[1]) & (currentPlayerPosition[0] == destination[0])) {
+                return true;
+            }
+            // check cell above if in board, if this cell is dest, true
+        } else if (rowInBoard(currentPlayerPosition[1] + 1)) {
+            if (((currentPlayerPosition[1] + 1) == destination[1]) & (currentPlayerPosition[0] == destination[0])) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int getBoardRows() {
