@@ -6,9 +6,9 @@ public class BoardCell {
     public static final double P_MARKET = .3;
     public static final double P_AVAILABLE = .5;
     private static final int DECIMAL_PLACE_RAND_NUM = 100;
-    private static final String BLOCKED = "blocked";
-    private static final String AVAILABLE = "available";
-    private static final String MARKET = "market";
+    public static final String BLOCKED = "blocked";
+    public static final String AVAILABLE = "available";
+    public static final String MARKET = "market";
 
     private String boardState;
     private boolean playerCell;

@@ -21,6 +21,12 @@ public class GameBoard {
         setBoardRows(boardRows);
         board = new BoardCell[boardRows][boardCols];
         currentPlayerPosition = new int[] {0, 0};
+        do {
+            initBoard();
+        } while(!canPlayersMove());
+    }
+
+    private void initBoard() {
         for (int i=0; i < boardRows; i++) {
             for (int j = 0; j < boardCols; j++) {
                 board[i][j] = new BoardCell();
@@ -29,6 +35,30 @@ public class GameBoard {
                 }
             }
         }
+    }
+
+    private boolean canPlayersMove() {
+        if (rowInBoard(currentPlayerPosition[0] - 1)) {
+            if (!board[currentPlayerPosition[0] - 1][currentPlayerPosition[1]].getBoardState().equalsIgnoreCase(BoardCell.BLOCKED)) {
+                return true;
+            }
+            // check cell to right if in board, if this cell is dest, true
+        } else if (rowInBoard(currentPlayerPosition[0] + 1)) {
+            if (!board[currentPlayerPosition[0] + 1][currentPlayerPosition[1]].getBoardState().equalsIgnoreCase(BoardCell.BLOCKED)) {
+                return true;
+            }
+            // check cell below if in board, if this cell is dest, true
+        } else if (colInBoard(currentPlayerPosition[1] - 1)) {
+            if (!board[currentPlayerPosition[0]][currentPlayerPosition[1] - 1].getBoardState().equalsIgnoreCase(BoardCell.BLOCKED)) {
+                return true;
+            }
+            // check cell above if in board, if this cell is dest, true
+        } else if (colInBoard(currentPlayerPosition[1] + 1)) {
+            if (!board[currentPlayerPosition[0]][currentPlayerPosition[1] + 1].getBoardState().equalsIgnoreCase(BoardCell.BLOCKED)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean rowInBoard(int row) {
@@ -52,12 +82,12 @@ public class GameBoard {
                 return true;
             }
             // check cell below if in board, if this cell is dest, true
-        } else if (rowInBoard(currentPlayerPosition[1] - 1)) {
+        } else if (colInBoard(currentPlayerPosition[1] - 1)) {
             if (((currentPlayerPosition[1] - 1) == destination[1]) & (currentPlayerPosition[0] == destination[0])) {
                 return true;
             }
             // check cell above if in board, if this cell is dest, true
-        } else if (rowInBoard(currentPlayerPosition[1] + 1)) {
+        } else if (colInBoard(currentPlayerPosition[1] + 1)) {
             if (((currentPlayerPosition[1] + 1) == destination[1]) & (currentPlayerPosition[0] == destination[0])) {
                 return true;
             }
