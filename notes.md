@@ -84,3 +84,39 @@ do {
 
 } while(stillPlaying)
 ```
+
+# **At any time should be able to show menu... make this a top level game static method?**
+
+# Game board
+* matrix of game cells
+* check that players can move, if not re-make board
+## Game cells
+* game cell has
+    * strict probability on creation of being
+        * blocked
+        * market
+        * available
+
+
+### Blocked
+* blocked rejects any players from moving in (return false on .move into())
+
+### Market
+* market starts up a market instance
+* See top level menus from file names of configs
+  * select top level, see items for sale in market
+  * market handles if it will sell to a hero - score enough? etc
+  * hero handles if they have enough money
+    * decrease money might be a boolean, successful or not
+
+### Available
+* some probability of monsters appearing to fight
+* can send players to a fight instance where it controls rounds and monster generation 
+
+### Fight
+* Need to brush up on this 
+    
+
+
+
+
