@@ -66,6 +66,11 @@ public class BoardCell {
         this.heroes = heroes;
     }
 
+    public void removeHeroes() {
+        this.heroes = null;
+        setPlayerCell(false);
+    }
+
     public boolean isPlayerCell() {
         return playerCell;
     }
