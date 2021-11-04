@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -12,6 +11,7 @@ public class BoardCell {
     private static final String MARKET = "market";
 
     private String boardState;
+    private boolean playerCell;
 
     public BoardCell() {
         double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
@@ -39,4 +39,37 @@ public class BoardCell {
         }
     }
 
+    @Override
+    public String toString() {
+        String str;
+        if (boardState.equalsIgnoreCase(AVAILABLE)) {
+            str =  " ";
+        } else if (boardState.equalsIgnoreCase(MARKET)) {
+            str =  "M";
+        } else {
+            str =  "X";
+        }
+
+        if (isPlayerCell()) {
+            str = "H";
+        }
+
+        return str;
+    }
+
+    public boolean isPlayerCell() {
+        return playerCell;
+    }
+
+    public void setPlayerCell(boolean playerCell) {
+        this.playerCell = playerCell;
+    }
+
+    public String getBoardState() {
+        return boardState;
+    }
+
+    public void setBoardState(String boardState) {
+        this.boardState = boardState;
+    }
 }
