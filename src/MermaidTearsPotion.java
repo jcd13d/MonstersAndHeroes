@@ -1,13 +1,14 @@
 public class MermaidTearsPotion extends Potion {
 
-    public MermaidTearsPotion(int attributeIncrease) {
-        this.attributeIncrease = attributeIncrease;
+    public MermaidTearsPotion(String name, double cost, double reqLevel, double attributeIncrease) {
+        super(name, cost, reqLevel, attributeIncrease);
+        setAttributeIncrease(attributeIncrease);
     }
 
     public void feedPotion(Hero hero) {
-        hero.increaseHealth(attributeIncrease);
-        hero.increaseMana(attributeIncrease);
-        hero.increaseStrength(attributeIncrease);
-        hero.inceraseAgility(attributeIncrease);
+        hero.increaseHealth(getAttributeIncrease());
+        hero.increaseMana(getAttributeIncrease());
+        hero.increaseStrength(getAttributeIncrease());
+        hero.inceraseAgility(getAttributeIncrease());
     }
 }

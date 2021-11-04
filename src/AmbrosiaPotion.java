@@ -1,15 +1,17 @@
 public class AmbrosiaPotion extends Potion {
 
-    public AmbrosiaPotion(int attributeIncrease) {
-        this.attributeIncrease = attributeIncrease;
+    public AmbrosiaPotion(String name, double cost, double reqLevel, double attributeIncrease) {
+        super(name, cost, reqLevel, attributeIncrease);
+        setAttributeIncrease(attributeIncrease);
     }
 
+    @Override
     public void feedPotion(Hero hero) {
-        hero.increaseHealth(attributeIncrease);
-        hero.increaseMana(attributeIncrease);
-        hero.increaseStrength(attributeIncrease);
-        hero.inceraseAgility(attributeIncrease);
-        hero.increaseDexterity(attributeIncrease);
-        hero.increaseDefense(attributeIncrease);
+        hero.increaseHealth(getAttributeIncrease());
+        hero.increaseMana(getAttributeIncrease());
+        hero.increaseStrength(getAttributeIncrease());
+        hero.inceraseAgility(getAttributeIncrease());
+        hero.increaseDexterity(getAttributeIncrease());
+        hero.increaseDefense(getAttributeIncrease());
     }
 }
