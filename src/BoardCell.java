@@ -30,9 +30,11 @@ public class BoardCell {
             return false;
         } else if (boardState.equalsIgnoreCase(MARKET)) {
             // TODO send to market!
+            System.out.println("We are in market!");
             return true;
         } else if (boardState.equalsIgnoreCase(AVAILABLE)) {
             // TODO players come into board space, probabilistically fight
+            System.out.println("We are in empty space");
             return true;
         } else {
             // will never get here!

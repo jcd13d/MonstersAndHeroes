@@ -25,6 +25,7 @@ public class GameBoard {
             initBoard();
         } while(!canPlayersMove());
         board[curPlayerPos[0]][curPlayerPos[1]].setHeroes(heroes);
+        board[curPlayerPos[0]][curPlayerPos[1]].setBoardState(BoardCell.AVAILABLE);
     }
 
     private void initBoard() {
@@ -75,32 +76,18 @@ public class GameBoard {
     }
 
     private void removeHerosHelper(int[] destination) {
-        board[curPlayerPos[0]][curPlayerPos[1]].removeHeroes();
-        board[destination[0]][destination[1]].setPlayerCell(true);
+        BoardCell currentCell = board[curPlayerPos[0]][curPlayerPos[1]];
+        BoardCell destCell = board[destination[0]][destination[1]];
+        destCell.setHeroes(currentCell.getHeroes());
+        currentCell.removeHeroes();
+        destCell.setPlayerCell(true);
+        setCurPlayerPos(destination);
     }
 
     public boolean moveHeroes(int[] destination) {
         // check cell to left if in board, if this cell is dest, true
         boolean status = false;
-        if (rowInBoard(curPlayerPos[0] - 1)) {
-            if (((curPlayerPos[0] - 1) == destination[0]) & (curPlayerPos[1] == destination[1])) {
-                status = playerMoveHelper(destination);
-                if (status) {
-                    removeHerosHelper(destination);
-                }
-                return status;
-            }
-            // check cell to right if in board, if this cell is dest, true
-        } else if (rowInBoard(curPlayerPos[0] + 1)) {
-            if (((curPlayerPos[0] + 1) == destination[0]) & (curPlayerPos[1] == destination[1])) {
-                status = playerMoveHelper(destination);
-                if (status) {
-                    removeHerosHelper(destination);
-                }
-                return status;
-            }
-            // check cell below if in board, if this cell is dest, true
-        } else if (colInBoard(curPlayerPos[1] - 1)) {
+        if (rowInBoard(curPlayerPos[1] - 1)) {
             if (((curPlayerPos[1] - 1) == destination[1]) & (curPlayerPos[0] == destination[0])) {
                 status = playerMoveHelper(destination);
                 if (status) {
@@ -108,9 +95,33 @@ public class GameBoard {
                 }
                 return status;
             }
-            // check cell above if in board, if this cell is dest, true
-        } else if (colInBoard(curPlayerPos[1] + 1)) {
+            // check cell to right if in board, if this cell is dest, true
+        }
+
+        if (rowInBoard(curPlayerPos[1] + 1)) {
             if (((curPlayerPos[1] + 1) == destination[1]) & (curPlayerPos[0] == destination[0])) {
+                status = playerMoveHelper(destination);
+                if (status) {
+                    removeHerosHelper(destination);
+                }
+                return status;
+            }
+            // check cell below if in board, if this cell is dest, true
+        }
+
+        if (colInBoard(curPlayerPos[0] + 1)) {
+            if (((curPlayerPos[0] + 1) == destination[0]) & (curPlayerPos[1] == destination[1])) {
+                status = playerMoveHelper(destination);
+                if (status) {
+                    removeHerosHelper(destination);
+                }
+                return status;
+            }
+            // check cell above if in board, if this cell is dest, true
+        }
+
+        if (colInBoard(curPlayerPos[0] - 1)) {
+            if (((curPlayerPos[0] - 1) == destination[0]) & (curPlayerPos[1] == destination[1])) {
                 status = playerMoveHelper(destination);
                 if (status) {
                     removeHerosHelper(destination);
@@ -120,6 +131,14 @@ public class GameBoard {
         }
 
         return false;
+    }
+
+    public int[] getCurPlayerPos() {
+        return curPlayerPos;
+    }
+
+    public void setCurPlayerPos(int[] curPlayerPos) {
+        this.curPlayerPos = curPlayerPos;
     }
 
     public int getBoardRows() {
@@ -150,7 +169,7 @@ public class GameBoard {
     public String toString() {
         int cellHeight = 1;
         StringBuilder str = new StringBuilder();
-        str.append(String.format("Heroes at (%s, %s)\n", curPlayerPos[0], curPlayerPos[0]));
+        str.append(String.format("Heroes at (%s, %s)\n", curPlayerPos[0], curPlayerPos[1]));
 
         // print column numbers
         str.append("    ");

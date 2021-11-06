@@ -34,6 +34,25 @@ public class Utils {
         return data;
     }
 
+    public String getStringInput() {
+        String input;
+        input = scanner.nextLine();
+        return input;
+    }
+
+    public String getStringInput(String prompt) {
+        System.out.println(prompt);
+        return getStringInput();
+    }
+
+    public String getStringInput(String prompt, StringChecker checker) {
+        String input;
+        do {
+            input = getStringInput(prompt);
+        } while (!checker.check(input));
+        return input;
+    }
+
     // integer input
     public int getIntInput() {
         String input;
