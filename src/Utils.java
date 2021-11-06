@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,17 +18,17 @@ public class Utils {
         String[] s;
         int ct = 0;
         while ((str = br.readLine()) != null) {
-            if (ct == 0) {
-                s = str.split("/");
-            } else {
-                s = str.split("\\s+");
+            if (str.length() > 0) {
+                if (ct == 0) {
+                    s = str.split("/");
+                } else {
+                    s = str.split("\\s+");
+                }
+                if (s.length > 0) {
+                    data.add(s);
+                }
+                ct++;
             }
-            data.add(s);
-            ct++;
-        }
-
-        for (String[] line : data) {
-            System.out.println(Arrays.toString(line));
         }
 
         return data;
@@ -83,6 +84,7 @@ public class Utils {
         utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt");
         utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Dragons.txt");
         utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Weaponry.txt");
+        utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt");
     }
 
 }

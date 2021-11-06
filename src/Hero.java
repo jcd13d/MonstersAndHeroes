@@ -209,4 +209,15 @@ public abstract class Hero {
     public void setHp(double hp) {
         this.hp = hp;
     }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", exp=" + exp +
+                ", level=" + level +
+                ", hp=" + hp +
+                ", heroType='" + heroType + '\'' +
+                '}';
+    }
 }
