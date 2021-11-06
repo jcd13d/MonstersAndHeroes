@@ -54,8 +54,14 @@ public class Utils {
         return getIntInput();
     }
 
-    public int getIntInput(String prompt, Checker checker) {
+    public int getIntInput(String prompt, IntChecker checker) {
+        int input;
 
+        do {
+            input = getIntInput(prompt);
+        } while (!checker.check(input));
+
+        return input;
     }
 
     // check that a string is an integer
