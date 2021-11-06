@@ -33,6 +33,45 @@ public class Utils {
         return data;
     }
 
+    // integer input
+    public int getIntInput() {
+        String input;
+        input = scanner.nextLine();
+        boolean check = intCheck(input);       // did they pass an int?
+
+        while(!check) {                         // if not int, ask again
+            System.out.println("Not an Integer!");
+            input = scanner.nextLine();
+            check = intCheck(input);
+        }
+
+        return Integer.parseInt(input);          // parse to int
+    }
+
+    // get int with prompt
+    public int getIntInput(String prompt) {
+        System.out.println(prompt);
+        return getIntInput();
+    }
+
+    public int getIntInput(String prompt, Checker checker) {
+
+    }
+
+    // check that a string is an integer
+    public boolean intCheck(String input) {
+        boolean check = true;
+        for (int i = 0; i < input.length(); i++) {
+            check = check && Character.isDigit(input.charAt(i));
+        }
+
+        if (input.length() == 0) {
+            check = false;
+        }
+
+        return check;
+    }
+
     public static void main(String[] args) throws IOException {
         Utils utils = new Utils();
         utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt");

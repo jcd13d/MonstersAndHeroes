@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public abstract class Hero {
     private String name;
     private double mana;
@@ -11,6 +14,10 @@ public abstract class Hero {
     private double currentLevelPoints;
     private double hp;
     private double defense;
+    private HashMap<String, Weapon> weapons;
+    private HashMap<String, Potion> potions;
+    private HashMap<String, Armor> armors;
+    private HashMap<String, Spell> spells;
     private String heroType;
     private Armor appliedArmor;
     private Weapon appliedWeapon;
@@ -73,6 +80,38 @@ public abstract class Hero {
 
     public void setHeroType(String heroType) {
         this.heroType = heroType;
+    }
+
+    public HashMap<String, Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(HashMap<String, Weapon> weapons) {
+        this.weapons = weapons;
+    }
+
+    public HashMap<String, Potion> getPotions() {
+        return potions;
+    }
+
+    public void setPotions(HashMap<String, Potion> potions) {
+        this.potions = potions;
+    }
+
+    public HashMap<String, Armor> getArmors() {
+        return armors;
+    }
+
+    public void setArmors(HashMap<String, Armor> armors) {
+        this.armors = armors;
+    }
+
+    public HashMap<String, Spell> getSpells() {
+        return spells;
+    }
+
+    public void setSpells(HashMap<String, Spell> spells) {
+        this.spells = spells;
     }
 
     public double getLevel() {

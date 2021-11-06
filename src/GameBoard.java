@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class GameBoard {
     private static final int DEFAULT_BOARD_SIZE = 8;
     private int boardRows;
@@ -5,15 +8,15 @@ public class GameBoard {
     private BoardCell[][] board;
     private int[] curPlayerPos;
 
-    public GameBoard() {
-        this(DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE);
+    public GameBoard(ArrayList<Hero> heroes) {
+        this(DEFAULT_BOARD_SIZE, DEFAULT_BOARD_SIZE, heroes);
     }
 
-    public GameBoard(int boardSize) {
-        this(boardSize, boardSize);
+    public GameBoard(int boardSize, ArrayList<Hero> heroes) {
+        this(boardSize, boardSize, heroes);
     }
 
-    public GameBoard(int boardRows, int boardCols) {
+    public GameBoard(int boardRows, int boardCols, ArrayList<Hero> heroes) {
         setBoardCols(boardCols);
         setBoardRows(boardRows);
         board = new BoardCell[boardRows][boardCols];
@@ -21,6 +24,7 @@ public class GameBoard {
         do {
             initBoard();
         } while(!canPlayersMove());
+        board[curPlayerPos[0]][curPlayerPos[1]].setHeroes(heroes);
     }
 
     private void initBoard() {
@@ -184,11 +188,6 @@ public class GameBoard {
         }
         str.append("|\n");
         return str.toString();
-    }
-
-    public static void main(String[] args) {
-        GameBoard brd = new GameBoard();
-        System.out.println(brd);
     }
 
 }
