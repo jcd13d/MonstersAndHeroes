@@ -5,6 +5,7 @@ public class BoardCell {
     public static final double P_BLOCKED = .2;
     public static final double P_MARKET = .3;
     public static final double P_AVAILABLE = .5;
+    public static final double P_FIGHT = .5;
     private static final int DECIMAL_PLACE_RAND_NUM = 100;
     public static final String BLOCKED = "blocked";
     public static final String AVAILABLE = "available";
@@ -35,6 +36,11 @@ public class BoardCell {
             return true;
         } else if (boardState.equalsIgnoreCase(AVAILABLE)) {
             // TODO players come into board space, probabilistically fight
+            double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
+            if (randNum < P_FIGHT) {
+                Fight fight = new Fight(heroes);
+                fight.startFight();
+            }
             System.out.println("We are in empty space");
             return true;
         } else {
