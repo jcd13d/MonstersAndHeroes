@@ -1,7 +1,10 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public abstract class Hero {
+    private Utils utils = new Utils();
     private String name;
     private double mana;
     private double strength;
@@ -14,10 +17,10 @@ public abstract class Hero {
     private double currentLevelPoints;
     private double hp;
     private double defense;
-    private HashMap<String, Weapon> weapons;
-    private HashMap<String, Potion> potions;
-    private HashMap<String, Armor> armors;
-    private HashMap<String, Spell> spells;
+    private ArrayList<Weapon> weapons;
+    private ArrayList<Potion> potions;
+    private ArrayList<Armor> armors;
+    private ArrayList<Spell> spells;
     private String heroType;
     private Armor appliedArmor;
     private Weapon appliedWeapon;
@@ -30,19 +33,19 @@ public abstract class Hero {
     }
 
     public void addWeapon(Weapon weapon) {
-        weapons.put(weapon.name, weapon);
+        weapons.add(weapon);
     }
 
     public void addSpell(Spell spell) {
-        spells.put(spell.getName(), spell);
+        spells.add(spell);
     }
 
     public void addArmor(Armor armor) {
-        armors.put(armor.getName(), armor);
+        armors.add(armor);
     }
 
     public void addPotion(Potion potion) {
-        potions.put(potion.getName(), potion);
+        potions.add(potion);
     }
 
     public void applyArmor(Armor armor) {
@@ -102,35 +105,35 @@ public abstract class Hero {
         this.heroType = heroType;
     }
 
-    public HashMap<String, Weapon> getWeapons() {
+    public ArrayList<Weapon> getWeapons() {
         return weapons;
     }
 
-    public void setWeapons(HashMap<String, Weapon> weapons) {
+    public void setWeapons(ArrayList<Weapon> weapons) {
         this.weapons = weapons;
     }
 
-    public HashMap<String, Potion> getPotions() {
+    public ArrayList<Potion> getPotions() {
         return potions;
     }
 
-    public void setPotions(HashMap<String, Potion> potions) {
+    public void setPotions(ArrayList<Potion> potions) {
         this.potions = potions;
     }
 
-    public HashMap<String, Armor> getArmors() {
+    public ArrayList<Armor> getArmors() {
         return armors;
     }
 
-    public void setArmors(HashMap<String, Armor> armors) {
+    public void setArmors(ArrayList<Armor> armors) {
         this.armors = armors;
     }
 
-    public HashMap<String, Spell> getSpells() {
+    public ArrayList<Spell> getSpells() {
         return spells;
     }
 
-    public void setSpells(HashMap<String, Spell> spells) {
+    public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
     }
 
@@ -235,6 +238,63 @@ public abstract class Hero {
         this.hp = hp;
     }
 
+    public void infoMenu() {
+        System.out.println("Hero Stats:");
+        System.out.println(this);
+        String input = utils.getStringInput(infoMenuPrompt(), new StringInListChecker(Arrays.asList("exit", "equip")));
+        if (input.equalsIgnoreCase("equip")) {
+            equipMenu();
+        } else {
+            // exit
+        }
+    }
+
+    public void equipMenu() {
+        // hero print, shows equipped
+        System.out.println("Hero equipped shown below:");
+        System.out.println(this);
+        // choose type of thing to equip
+        System.out.println("Choose type of item to equip: \nweapons\narmor\ntype 'none' to exit\n");
+        String input = utils.getStringInput("", new StringInListChecker(Arrays.asList("weapons", "armor", "none")));
+        if (input.equalsIgnoreCase("armor")) {
+            armorEquipMenu();
+        } else if (input.equalsIgnoreCase("weapons")){
+            weaponEquipMenu();
+        } else {
+            // nothing
+        }
+    }
+
+    public void armorEquipMenu() {
+        System.out.println("Please select armor to equip from the list below:");
+        for (int i = 0; i < armors.size(); i++) {
+            System.out.printf("%s:     %s\n", i, armors.get(i));
+        }
+        System.out.printf("%s:     exit\n", armors.size());
+        int input = utils.getIntInput("", new RangeChecker(0, armors.size()));
+        if (input < armors.size()) {
+            setAppliedArmor(armors.get(input));
+        }
+        equipMenu();
+    }
+
+    public void weaponEquipMenu() {
+        System.out.println("Please select weapon to equip from the list below:");
+        for (int i = 0; i < weapons.size(); i++) {
+            System.out.printf("%s:     %s\n", i, weapons.get(i));
+        }
+        System.out.printf("%s:     exit\n", weapons.size());
+        int input = utils.getIntInput("", new RangeChecker(0, weapons.size()));
+        if (input < weapons.size()) {
+            setAppliedWeapon(weapons.get(input));
+        }
+        equipMenu();
+    }
+
+    private String infoMenuPrompt() {
+        return "type 'equip' to manage items equipped or 'exit' to move to next hero";
+    }
+
     @Override
     public String toString() {
         return "Hero{" +
@@ -243,6 +303,12 @@ public abstract class Hero {
                 ", money=" + money +
                 ", level=" + level +
                 ", hp=" + hp +
+                ", mana=" + mana +
+                ", dexterity=" + dexterity +
+                ", agility=" + agility +
+                ", strength=" + strength +
+                ", equipped armor=" + appliedArmor +
+                ", equipped weapon=" + appliedWeapon +
                 ", heroType='" + heroType + '\'' +
                 '}';
     }

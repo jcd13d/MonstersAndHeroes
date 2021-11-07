@@ -55,7 +55,9 @@ public class HaMGame extends Game {
         if (turnInput.equalsIgnoreCase("q")) {
             return true;
         } else if (turnInput.equalsIgnoreCase("i")) {
-            // TODO bring up info page
+            for (Hero hero : heroes) {
+                hero.infoMenu();
+            }
             return true;
         }
         return board.moveHeroes(destinationHelper(moveMapping.get(turnInput)));

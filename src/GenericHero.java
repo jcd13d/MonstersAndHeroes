@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GenericHero extends Hero {
@@ -19,10 +20,10 @@ public class GenericHero extends Hero {
         setCurrentLevelPoints(startExp);
         setNextLevelPoints(startExp * 10);
         setHeroType(heroType);
-        setArmors(new HashMap<>());
-        setWeapons(new HashMap<>());
-        setPotions(new HashMap<>());
-        setSpells(new HashMap<>());
+        setArmors(new ArrayList<>());
+        setWeapons(new ArrayList<>());
+        setPotions(new ArrayList<>());
+        setSpells(new ArrayList<>());
     }
 
     public void levelUp() {

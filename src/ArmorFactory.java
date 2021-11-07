@@ -7,9 +7,9 @@ public class ArmorFactory extends HaMFactory {
     private ArrayList<ArmorConfig> config;
 
     public ArmorFactory() {
-        setFactoryName("Weapons");
+        setFactoryName("Armor");
         config = new ArrayList<>();
-        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Weaponry.txt"};
+        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt"};
 
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
