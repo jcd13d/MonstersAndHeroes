@@ -75,7 +75,6 @@ public class WeaponFactory extends HeroFactory {
         }
     }
 
-
     public static void main(String[] args) {
         WeaponFactory factory = new WeaponFactory();
         factory.printWeaponMenu();
