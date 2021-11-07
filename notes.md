@@ -108,6 +108,14 @@ do {
   * market handles if it will sell to a hero - score enough? etc
   * hero handles if they have enough money
     * decrease money might be a boolean, successful or not
+* Class Market
+  * create new instance every time? probably fine.
+  * print all items with numbers - select number to buy
+    * pass hero and number to buy 
+    * check if the correct level etc
+    * dec money etc
+  * have button to exit for that hero
+  * do this for all heroes 
 
 ### Available
 * some probability of monsters appearing to fight

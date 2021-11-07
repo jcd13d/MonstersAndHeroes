@@ -1,26 +1,26 @@
 public class Weapon extends Item {
-    int damage;
-    int reqHands;
+    double damage;
+    double reqHands;
 
-    public Weapon(String name, int cost, int reqLevel, int damage, int reqHands) {
+    public Weapon(String name, double cost, double reqLevel, double damage, double reqHands) {
         super(name, cost, reqLevel);
         this.damage = damage;
         this.reqHands = reqHands;
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    public void setDamage(double damage) {
         this.damage = damage;
     }
 
-    public int getReqHands() {
+    public double getReqHands() {
         return reqHands;
     }
 
-    public void setReqHands(int reqHands) {
+    public void setReqHands(double reqHands) {
         this.reqHands = reqHands;
     }
 

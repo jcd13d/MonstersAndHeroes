@@ -31,6 +31,10 @@ public class Utils {
             }
         }
 
+//        for (String[] line : data) {
+//            System.out.println(Arrays.toString(line));
+//        }
+
         return data;
     }
 
