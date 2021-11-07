@@ -1,17 +1,17 @@
 public class Armor extends Item {
 
-    int dmgReduction;
+    double dmgReduction;
 
-    public Armor(String name, int cost, int reqLevel, int dmgReduction) {
+    public Armor(String name, double cost, double reqLevel, double dmgReduction) {
         super(name, cost, reqLevel);
         this.dmgReduction = dmgReduction;
     }
 
-    public int getDmgReduction() {
+    public double getDmgReduction() {
         return dmgReduction;
     }
 
-    public void setDmgReduction(int dmgReduction) {
+    public void setDmgReduction(double dmgReduction) {
         this.dmgReduction = dmgReduction;
     }
 

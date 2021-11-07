@@ -3,11 +3,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class WeaponFactory extends HeroFactory {
+public class WeaponFactory extends HaMFactory {
     private int numWeapons;
     private ArrayList<WeaponConfig> config;
 
     public WeaponFactory() {
+        setFactoryName("Weapons");
         config = new ArrayList<>();
         String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Weaponry.txt"};
 
@@ -73,6 +74,14 @@ public class WeaponFactory extends HeroFactory {
                     ", damage=" + damage +
                     ", reqHands=" + reqHands;
         }
+    }
+
+    public int getNumWeapons() {
+        return numWeapons;
+    }
+
+    public void setNumWeapons(int numWeapons) {
+        this.numWeapons = numWeapons;
     }
 
     public static void main(String[] args) {

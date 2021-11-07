@@ -7,6 +7,7 @@ public class SpellFactory extends HaMFactory {
     private ArrayList<SpellConfig> config;
 
     public SpellFactory() {
+        setFactoryName("Spells");
         config = new ArrayList<>();
         String[] files = {
                 "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/FireSpells.txt",
@@ -37,6 +38,14 @@ public class SpellFactory extends HaMFactory {
         }
 
         numSpells = config.size();
+    }
+
+    public int getNumSpells() {
+        return numSpells;
+    }
+
+    public void setNumSpells(int numSpells) {
+        this.numSpells = numSpells;
     }
 
     public Spell getSpell(String name, double cost, double reqLevel, double dmgReduction, double manaCost, String spellType, double monsterReduction) {

@@ -7,6 +7,7 @@ public class PotionFactory extends HaMFactory{
     private ArrayList<PotionConfig> config;
 
     public PotionFactory() {
+        setFactoryName("Potions");
         config = new ArrayList<>();
 
         String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Potions.txt"};
@@ -32,6 +33,10 @@ public class PotionFactory extends HaMFactory{
         }
 
         numPotions = config.size();
+    }
+
+    public int getNumPotions() {
+        return numPotions;
     }
 
     public Potion getPotionByIndex(int potionNumber){

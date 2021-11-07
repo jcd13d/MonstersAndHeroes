@@ -25,6 +25,26 @@ public abstract class Hero {
 
     abstract void levelUp();
 
+    public boolean pay(double amt) {
+        return setMoney(getMoney() - amt);
+    }
+
+    public void addWeapon(Weapon weapon) {
+        weapons.put(weapon.name, weapon);
+    }
+
+    public void addSpell(Spell spell) {
+        spells.put(spell.getName(), spell);
+    }
+
+    public void addArmor(Armor armor) {
+        armors.put(armor.getName(), armor);
+    }
+
+    public void addPotion(Potion potion) {
+        potions.put(potion.getName(), potion);
+    }
+
     public void applyArmor(Armor armor) {
         setAppliedArmor(armor);
     }
@@ -190,8 +210,13 @@ public abstract class Hero {
         return money;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public boolean setMoney(double money) {
+        if (money >= 0) {
+            this.money = money;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public double getExp() {
@@ -215,6 +240,7 @@ public abstract class Hero {
         return "Hero{" +
                 "name='" + name + '\'' +
                 ", exp=" + exp +
+                ", money=" + money +
                 ", level=" + level +
                 ", hp=" + hp +
                 ", heroType='" + heroType + '\'' +

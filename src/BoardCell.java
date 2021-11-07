@@ -29,8 +29,9 @@ public class BoardCell {
         if (boardState.equalsIgnoreCase(BLOCKED)) {
             return false;
         } else if (boardState.equalsIgnoreCase(MARKET)) {
-            // TODO send to market!
-            System.out.println("We are in market!");
+            System.out.println("You are in a market!");
+            Market market = new Market();
+            market.marketMenus(heroes);
             return true;
         } else if (boardState.equalsIgnoreCase(AVAILABLE)) {
             // TODO players come into board space, probabilistically fight
