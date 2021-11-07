@@ -19,6 +19,7 @@ public class HeroFactory extends HaMFactory {
 //        } catch (IOException e) {
 //            System.out.println("unable to read file");
 //        }
+
         String[] files = {
                 "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt",
                 "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Sorcerers.txt",

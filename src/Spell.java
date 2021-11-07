@@ -1,31 +1,31 @@
 public class Spell extends Item {
-    int dmgReduction;
-    int manaCost;
+    double dmgReduction;
+    double manaCost;
     String spellType;
 
     public Spell() {
     }
 
-    public Spell(String name, int cost, int reqLevel, int dmgReduction, int manaCost, String spellType) {
+    public Spell(String name, double cost, double reqLevel, double dmgReduction, double manaCost, String spellType) {
         super(name, cost, reqLevel);
         this.dmgReduction = dmgReduction;
         this.manaCost = manaCost;
         this.spellType = spellType;
     }
 
-    public int getDmgReduction() {
+    public double getDmgReduction() {
         return dmgReduction;
     }
 
-    public void setDmgReduction(int dmgReduction) {
+    public void setDmgReduction(double dmgReduction) {
         this.dmgReduction = dmgReduction;
     }
 
-    public int getManaCost() {
+    public double getManaCost() {
         return manaCost;
     }
 
-    public void setManaCost(int manaCost) {
+    public void setManaCost(double manaCost) {
         this.manaCost = manaCost;
     }
 
