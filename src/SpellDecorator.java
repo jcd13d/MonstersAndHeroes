@@ -5,7 +5,7 @@ public abstract class SpellDecorator extends Spell {
         decoratedSpell = spell;
     }
 
-    public void use(BadGuy monster) {
-        monster.inflictDamage(decoratedSpell.getDmgReduction());
+    public void use(Monster monster, double dexterity) {
+        monster.inflictDamage(decoratedSpell.getDmgReduction(), true);
     }
 }

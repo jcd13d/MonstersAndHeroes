@@ -4,8 +4,8 @@ public class GenericLevelUpBehavior implements LevelUpBehavior {
         hero.setLevel(hero.getLevel() + 1);
         hero.setHp(100*hero.getLevel());
         hero.setMana(hero.getMana()*1.1);
-        hero.setNextLevelPoints(hero.getCurrentLevelPoints()*10);
-        hero.setCurrentLevelPoints(hero.getCurrentLevelPoints());
+        hero.setNextLevelPoints(hero.getLevel()*10);
+//        hero.setCurrentLevelPoints(hero.getCurrentLevelPoints());
         // inc all skills 5% strength, dexterity, agility
         hero.setStrength(hero.getStrength() * PCT_INC);
         hero.setDexterity(hero.getDexterity() * PCT_INC);

@@ -8,7 +8,7 @@ public class Spell extends Item {
 
     public Spell(String name, double cost, double reqLevel, double dmgReduction, double manaCost, String spellType) {
         super(name, cost, reqLevel);
-        this.dmgReduction = dmgReduction;
+        this.dmgReduction = dmgReduction * .2;
         this.manaCost = manaCost;
         this.spellType = spellType;
     }
@@ -37,8 +37,12 @@ public class Spell extends Item {
         this.spellType = spellType;
     }
 
-    public void use(BadGuy monster) {
-        monster.inflictDamage(getDmgReduction());
+    public void use(Monster monster, double dexterity) {
+        monster.inflictDamage(getDmgReduction() + (getDmgReduction())*(dexterity/1000), true);
+    }
+
+    public void inflictDmgPrompt(double dmg) {
+        System.out.printf("Spell caused %s damage!", dmg);
     }
 
 }

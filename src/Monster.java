@@ -1,3 +1,5 @@
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Monster implements BadGuy {
     String name;
     String type;
@@ -17,8 +19,25 @@ public class Monster implements BadGuy {
         this.type = monsterType;
     }
 
-    public void inflictDamage(double dmg) {
-        setHp(getHp() - dmg);
+    public void attack(Hero hero) {
+        double attackMultiplier = .5;
+        double dmg = damage * attackMultiplier;
+        boolean attkSuccessful = hero.inflictDamage(dmg);
+        if (attkSuccessful) {
+            System.out.printf("%s inflicted %s damage on %s!!\n", this.getName(), dmg, hero.getName());
+        }
+    }
+
+    public boolean inflictDamage(double dmg, boolean bypassDodge) {
+        double dodgeChanceMultiplier = 0.01;
+        double randNum = ThreadLocalRandom.current().nextInt(0, 1000) / (double) 1000;
+        if ((randNum < dodgeChance*dodgeChanceMultiplier) & !bypassDodge) {
+            System.out.println("Monster dodged hero attack!");
+            return false;
+        } else {
+            setHp(getHp() - Math.max(dmg - defense*.2, 0));
+            return true;
+        }
     }
 
     public void reduceDamage(double dmgReduction) {
@@ -47,8 +66,11 @@ public class Monster implements BadGuy {
     }
 
     public void setHp(double hp) {
-        // TODO: a check to make this zero if goes below zero?
-        this.hp = hp;
+        if (hp >= 0) {
+            this.hp = hp;
+        } else {
+            this.hp = 0;
+        }
     }
 
     public double getLevel() {
@@ -92,5 +114,18 @@ public class Monster implements BadGuy {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", hp=" + hp +
+                ", level=" + level +
+                ", damage=" + damage +
+                ", defense=" + defense +
+                ", dodgeChance=" + dodgeChance +
+                '}';
     }
 }

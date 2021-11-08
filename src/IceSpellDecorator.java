@@ -8,9 +8,9 @@ public class IceSpellDecorator extends SpellDecorator{
     }
 
     @Override
-    public void use(BadGuy monster) {
-        monster.inflictDamage(decoratedSpell.getDmgReduction());
-        monster.reduceDamage(getMonsterDmgReduction());
+    public void use(Monster monster, double dexterity) {
+        monster.inflictDamage(decoratedSpell.getDmgReduction() + (decoratedSpell.getDmgReduction()*(dexterity/1000)), true);
+        monster.reduceDamage(monster.getDamage() * 0.9);
     }
 
     public double getMonsterDmgReduction() {

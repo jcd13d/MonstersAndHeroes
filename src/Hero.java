@@ -2,6 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Hero {
     private Utils utils = new Utils();
@@ -28,8 +29,45 @@ public abstract class Hero {
 
     abstract void levelUp();
 
+    public void castSpell(int spellNumber, Monster monster) {
+        spells.get(spellNumber).use(monster, dexterity);
+    }
+
+    public void drinkPotion(int potionNumber) {
+        potions.get(potionNumber).feedPotion(this);
+    }
+
+    public void attack(Monster monster) {
+        double attackMultiplier = 0.1;
+        double damage = (appliedWeapon == null) ? strength*attackMultiplier : (strength + appliedWeapon.getDamage())*attackMultiplier;
+        boolean attkSuccessful = monster.inflictDamage(damage, false);
+        if (attkSuccessful) {
+            System.out.printf("%s inflicted %s damage on %s!!\n", this.getName(), damage, monster.getName());
+        }
+    }
+
+    public boolean inflictDamage(double dmg) {
+        double armorMultiplier = 1;
+        double dodgeMultilier = 0.001;
+        double randNum = ThreadLocalRandom.current().nextInt(0, 1000) / (double) 1000;
+        if (appliedArmor != null) {
+            dmg = Math.max(dmg - appliedArmor.getDmgReduction()*armorMultiplier, 0);
+        }
+        if (randNum < (agility * 0.0005)) {
+            System.out.println("Hero dodged monster attack!");
+            return false;
+        } else {
+            setHp(getHp() - dmg);
+            return true;
+        }
+    }
+
     public boolean pay(double amt) {
         return setMoney(getMoney() - amt);
+    }
+
+    public boolean payHero(double amt) {
+        return setMoney(getMoney() + amt);
     }
 
     public void addWeapon(Weapon weapon) {
@@ -228,6 +266,9 @@ public abstract class Hero {
 
     public void setExp(double exp) {
         this.exp = exp;
+        if (this.exp > getNextLevelPoints()) {
+            levelUp();
+        }
     }
 
     public double getHp() {
@@ -235,7 +276,11 @@ public abstract class Hero {
     }
 
     public void setHp(double hp) {
-        this.hp = hp;
+        if (hp >= 0){
+            this.hp = hp;
+        } else {
+            this.hp = 0;
+        }
     }
 
     public void infoMenu() {

@@ -8,9 +8,9 @@ public class LightningSpellDecorator extends SpellDecorator {
     }
 
     @Override
-    public void use(BadGuy monster) {
-        monster.inflictDamage(decoratedSpell.getDmgReduction());
-        monster.reduceDodge(getMonsterDodgeReduction());
+    public void use(Monster monster, double dexterity) {
+        monster.inflictDamage(decoratedSpell.getDmgReduction() + (decoratedSpell.getDmgReduction()*(dexterity/1000)), true);
+        monster.reduceDodge(monster.getDodgeChance() * 0.9);
     }
 
     public double getMonsterDodgeReduction() {

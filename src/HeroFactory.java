@@ -12,13 +12,6 @@ public class HeroFactory extends HaMFactory {
 
     public HeroFactory() {
         config = new ArrayList<>();
-//        try {
-//            configs.put("warriors", utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt"));
-//            configs.put("sorcerers", utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Sorcerers.txt"));
-//            configs.put("paladins", utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Paladins.txt"));
-//        } catch (IOException e) {
-//            System.out.println("unable to read file");
-//        }
 
         String[] files = {
                 "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt",

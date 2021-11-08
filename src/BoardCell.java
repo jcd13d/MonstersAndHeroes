@@ -39,7 +39,7 @@ public class BoardCell {
             double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
             if (randNum < P_FIGHT) {
                 Fight fight = new Fight(heroes);
-                fight.startFight();
+                fight.fight();
             }
             System.out.println("We are in empty space");
             return true;
