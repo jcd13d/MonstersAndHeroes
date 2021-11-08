@@ -58,6 +58,9 @@ public abstract class Hero extends Player{
             return false;
         } else {
             setHp(getHp() - dmg);
+            if (appliedArmor != null) {
+                System.out.printf("Armor absorbed %s of attack\n", appliedArmor.getDmgReduction()*armorMultiplier);
+            }
             return true;
         }
     }

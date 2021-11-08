@@ -1,3 +1,5 @@
+import sun.lwawt.macosx.CSystemTray;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -80,6 +82,7 @@ public class Fight {
 
         // end fight level setting
         if (heroesWin()) {
+            System.out.println("Heroes Win!!");
             for (int i = 0; i < heroes.size(); i++) {
                 Hero hero = heroes.get(i);
                 if (hero.getHp() > 0) {
@@ -89,6 +92,7 @@ public class Fight {
                 heroes.get(i).setHp(hero.getLevel() * 100); // todo is this right?
             }
         } else {
+            System.out.println("Monsters win");
             for (Hero hero : heroes) {
                 hero.setHp(hero.getLevel() * 100 / 2);
             }
