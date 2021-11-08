@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class SpellFactory extends HaMFactory {
@@ -9,10 +11,16 @@ public class SpellFactory extends HaMFactory {
     public SpellFactory() {
         setFactoryName("Spells");
         config = new ArrayList<>();
+
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path firePath = Paths.get(currentPath.toString(), "configs", "FireSpells.txt");
+        Path icePath = Paths.get(currentPath.toString(), "configs", "IceSpells.txt");
+        Path lightPath = Paths.get(currentPath.toString(), "configs", "LightningSpells.txt");
+
         String[] files = {
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/FireSpells.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/IceSpells.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/LightningSpells.txt"
+                firePath.toString(),
+                icePath.toString(),
+                lightPath.toString()
         };
 
         ArrayList<String[]> fileContents = new ArrayList<>();

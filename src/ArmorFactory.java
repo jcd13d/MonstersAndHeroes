@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ArmorFactory extends HaMFactory {
@@ -9,7 +11,11 @@ public class ArmorFactory extends HaMFactory {
     public ArmorFactory() {
         setFactoryName("Armor");
         config = new ArrayList<>();
-        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt"};
+
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path weaponPath = Paths.get(currentPath.toString(), "configs", "Armory.txt");
+//        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt"};
+        String[] files = {weaponPath.toString()};
 
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;

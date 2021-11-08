@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -11,10 +13,15 @@ public class MonsterFactory extends HaMFactory {
     public MonsterFactory() {
         config = new ArrayList<>();
 
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path dragonPath = Paths.get(currentPath.toString(), "configs", "Dragons.txt");
+        Path spiritPath = Paths.get(currentPath.toString(), "configs", "Spirits.txt");
+        Path exoskelPath = Paths.get(currentPath.toString(), "configs", "Exoskeletons.txt");
+
         String[] files = {
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Dragons.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Spirits.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Exoskeletons.txt"
+                dragonPath.toString(),
+                spiritPath.toString(),
+                exoskelPath.toString()
         };
 
         ArrayList<String[]> fileContents = new ArrayList<>();

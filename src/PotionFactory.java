@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class PotionFactory extends HaMFactory{
@@ -9,8 +11,12 @@ public class PotionFactory extends HaMFactory{
     public PotionFactory() {
         setFactoryName("Potions");
         config = new ArrayList<>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path potionsPath = Paths.get(currentPath.toString(), "configs", "Potions.txt");
 
-        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Potions.txt"};
+        String[] files = {
+                potionsPath.toString()
+        };
 
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;

@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,10 +15,15 @@ public class HeroFactory extends HaMFactory {
     public HeroFactory() {
         config = new ArrayList<>();
 
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path warriorPath = Paths.get(currentPath.toString(), "configs", "Warriors.txt");
+        Path sorcererPath = Paths.get(currentPath.toString(), "configs", "Sorcerers.txt");
+        Path paladinPath = Paths.get(currentPath.toString(), "configs", "Paladins.txt");
+
         String[] files = {
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Sorcerers.txt",
-                "/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Paladins.txt"
+                warriorPath.toString(),
+                sorcererPath.toString(),
+                paladinPath.toString()
         };
 
         ArrayList<String[]> fileContents = new ArrayList<>();
