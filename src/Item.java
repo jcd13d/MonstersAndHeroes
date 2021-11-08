@@ -1,4 +1,6 @@
 public abstract class Item {
+    // General item class
+
     String name;
     double cost;
     double reqLevel;

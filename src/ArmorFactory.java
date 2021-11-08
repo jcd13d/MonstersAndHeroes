@@ -5,6 +5,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ArmorFactory extends HaMFactory {
+    // Class to generate armor objects when needed
+
     private int numArmors;
     private ArrayList<ArmorConfig> config;
 
@@ -12,14 +14,16 @@ public class ArmorFactory extends HaMFactory {
         setFactoryName("Armor");
         config = new ArrayList<>();
 
+        // get configs, works accross OS
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path weaponPath = Paths.get(currentPath.toString(), "configs", "Armory.txt");
-//        String[] files = {"/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt"};
         String[] files = {weaponPath.toString()};
 
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
+
+        // read in contents of config and create objects to aid object instantiation
         for (String file : files) {
             path = new File(file);
             try {
@@ -57,12 +61,14 @@ public class ArmorFactory extends HaMFactory {
         return getArmor(cfg.name, cfg.cost, cfg.reqLevel, cfg.dmgReduction);
     }
 
+    // print armor options for easy selection
     public void printArmorMenu() {
         for (int i=0; i < config.size(); i++) {
             System.out.printf("%s:   %s\n", i, config.get(i));
         }
     }
 
+    // class to aid instantiation of objects from config info
     private class ArmorConfig {
         String name;
         double cost;
@@ -85,8 +91,4 @@ public class ArmorFactory extends HaMFactory {
         }
     }
 
-    public static void main(String[] args) {
-        WeaponFactory factory = new WeaponFactory();
-        factory.printWeaponMenu();
-    }
 }

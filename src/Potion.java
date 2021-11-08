@@ -1,4 +1,5 @@
 public class Potion extends Item {
+    // general pption class
     private double attributeIncrease;
 
     public Potion(String name, double cost, double reqLevel, double attributeIncrease) {
@@ -9,7 +10,7 @@ public class Potion extends Item {
     }
 
     public void feedPotion(Hero hero) {
-        // overwrite
+        // overwrite in sub class
     }
 
     public double getAttributeIncrease() {

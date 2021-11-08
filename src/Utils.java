@@ -1,14 +1,14 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.io.*;
 
 public class Utils {
+    // general I/O for M a H
+
     Scanner scanner = new Scanner(System.in);
 
+    // get config file as a list of arrays of each line
     public ArrayList<String[]> readTxtFile(String filename) throws IOException {
-        // TODO remember to use get directory and join them
         ArrayList<String[]> data = new ArrayList<>();
         File file = new File(filename);
 
@@ -30,10 +30,6 @@ public class Utils {
                 ct++;
             }
         }
-
-//        for (String[] line : data) {
-//            System.out.println(Arrays.toString(line));
-//        }
 
         return data;
     }
@@ -100,14 +96,6 @@ public class Utils {
         }
 
         return check;
-    }
-
-    public static void main(String[] args) throws IOException {
-        Utils utils = new Utils();
-        utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Armory.txt");
-        utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Dragons.txt");
-        utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Weaponry.txt");
-        utils.readTxtFile("/Users/justindiemmanuele/Documents/MS/CS611/HW3_MonstersAndHeros/Legends_Monsters_and_Heroes/Warriors.txt");
     }
 
 }

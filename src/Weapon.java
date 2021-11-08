@@ -1,4 +1,5 @@
 public class Weapon extends Item {
+    // weapon class
     double damage;
     double reqHands;
 

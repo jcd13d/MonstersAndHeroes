@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Hero extends Player{
+    // abstract hero class - logic and attributes for all heroes
+
     private Utils utils = new Utils();
     private String name;
     private double mana;
@@ -39,20 +41,30 @@ public abstract class Hero extends Player{
 
     public void attack(Monster monster) {
         double attackMultiplier = 0.1;
+
+        // damage depends on weapon applied
         double damage = (appliedWeapon == null) ? strength*attackMultiplier : (strength + appliedWeapon.getDamage())*attackMultiplier;
+
+        // attempt attack (can be dodged)
         boolean attkSuccessful = monster.inflictDamage(damage, false);
+
         if (attkSuccessful) {
             System.out.printf("%s inflicted %s damage on %s!!\n", this.getName(), damage, monster.getName());
         }
     }
 
+    // method for taking damage from enemy
     public boolean inflictDamage(double dmg) {
         double armorMultiplier = 1;
         double dodgeMultilier = 0.001;
         double randNum = ThreadLocalRandom.current().nextInt(0, 1000) / (double) 1000;
+
+        // if armor applied takes different damage
         if (appliedArmor != null) {
             dmg = Math.max(dmg - appliedArmor.getDmgReduction()*armorMultiplier, 0);
         }
+
+        // chance of dodging
         if (randNum < (agility * 0.0005)) {
             System.out.println("Hero dodged monster attack!");
             return false;
@@ -118,7 +130,6 @@ public abstract class Hero extends Player{
     }
 
     public void increaseDefense(double amt) {
-        // Todo should this be a monster attribute or related to armor?
         setDefense(getDefense() + amt);
     }
 
@@ -255,6 +266,7 @@ public abstract class Hero extends Player{
     }
 
     public boolean setMoney(double money) {
+        // cant have negative money
         if (money >= 0) {
             this.money = money;
             return true;
@@ -268,6 +280,7 @@ public abstract class Hero extends Player{
     }
 
     public void setExp(double exp) {
+        // handles level up immediately
         this.exp = exp;
         if (this.exp > getNextLevelPoints()) {
             levelUp();
@@ -279,6 +292,7 @@ public abstract class Hero extends Player{
     }
 
     public void setHp(double hp) {
+        // cant have negative hp
         if (hp >= 0){
             this.hp = hp;
         } else {
@@ -286,6 +300,7 @@ public abstract class Hero extends Player{
         }
     }
 
+    // info menu
     public void infoMenu() {
         System.out.println("Hero Stats:");
         System.out.println(this);
@@ -297,6 +312,7 @@ public abstract class Hero extends Player{
         }
     }
 
+    // menu to help equipping
     public void equipMenu() {
         // hero print, shows equipped
         System.out.println("Hero equipped shown below:");
@@ -313,6 +329,7 @@ public abstract class Hero extends Player{
         }
     }
 
+    // armor specific equip menu
     public void armorEquipMenu() {
         System.out.println("Please select armor to equip from the list below:");
         for (int i = 0; i < armors.size(); i++) {
@@ -326,6 +343,7 @@ public abstract class Hero extends Player{
         equipMenu();
     }
 
+    // weapon specific equip menu
     public void weaponEquipMenu() {
         System.out.println("Please select weapon to equip from the list below:");
         for (int i = 0; i < weapons.size(); i++) {

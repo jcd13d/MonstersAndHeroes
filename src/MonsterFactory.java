@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MonsterFactory extends HaMFactory {
+    // factory for producing monsters
 
     private ArrayList<MonsterConfig> config;
     private int numMonsters;
@@ -13,6 +14,7 @@ public class MonsterFactory extends HaMFactory {
     public MonsterFactory() {
         config = new ArrayList<>();
 
+        // works for all OS
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path dragonPath = Paths.get(currentPath.toString(), "configs", "Dragons.txt");
         Path spiritPath = Paths.get(currentPath.toString(), "configs", "Spirits.txt");
@@ -24,6 +26,7 @@ public class MonsterFactory extends HaMFactory {
                 exoskelPath.toString()
         };
 
+        // init config objects to aid initialization of monsters
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
@@ -50,6 +53,7 @@ public class MonsterFactory extends HaMFactory {
 
     }
 
+    // gets a random monster with a maximum level
     public Monster getRandMonsterLevelCap(int levelCap) {
         Monster monster;
         do {
@@ -67,10 +71,10 @@ public class MonsterFactory extends HaMFactory {
 
     public Monster getMonsterByIndex(int monsterNumber) {
         MonsterConfig cfg = config.get(monsterNumber);
-        // TODO figure out HP!
         return getMonster(cfg.name, 100*cfg.level, cfg.level, cfg.damage, cfg.damage, cfg.dodgeChance, cfg.monsterType);
     }
 
+    // helper class to aid in init monsters
     private class MonsterConfig {
         public String name;
         public double level;

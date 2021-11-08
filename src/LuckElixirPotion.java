@@ -1,4 +1,5 @@
 public class LuckElixirPotion extends Potion {
+    // LE specific logic
 
     public LuckElixirPotion(String name, double cost, double reqLevel, double attributeIncrease) {
         super(name, cost, reqLevel, attributeIncrease);

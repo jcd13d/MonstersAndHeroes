@@ -1,4 +1,6 @@
 public class Spell extends Item {
+    // general spell class
+
     double dmgReduction;
     double manaCost;
     String spellType;
@@ -37,6 +39,7 @@ public class Spell extends Item {
         this.spellType = spellType;
     }
 
+    // inflict damage
     public void use(Monster monster, double dexterity) {
         monster.inflictDamage(getDmgReduction() + (getDmgReduction())*(dexterity/1000), true);
     }

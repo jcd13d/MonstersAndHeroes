@@ -1,4 +1,5 @@
 public abstract class SpellDecorator extends Spell {
+    // general abstract spell decorator class
     protected Spell decoratedSpell;
 
     public SpellDecorator(Spell spell) {

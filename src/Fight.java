@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// Class to handle all fighting logic
 public class Fight {
     private List<Hero> heroes;
     private List<Monster> monsters;
@@ -37,10 +38,10 @@ public class Fight {
     }
 
     private boolean endFightCondition() {
-
         return heroesWin() | monstersWin();
     }
 
+    // monsters win if all heroes have 0 xp
     private boolean monstersWin() {
         double totHp = 0;
         for (Hero hero : heroes) {
@@ -49,6 +50,7 @@ public class Fight {
         return (totHp == 0);
     }
 
+    // monsters win if all monsters have 0 xp
     private boolean heroesWin() {
         double totHp = 0;
         for (Monster monster : monsters) {
@@ -58,9 +60,11 @@ public class Fight {
     }
 
     public void fight() {
-        // TODO IMPLEMENT DODGE Hero and monster
         int currMonsterNum = 0;
+
+        // do turns until fight ends
         while(!endFightCondition()) {
+            // round logic
             for (Hero hero : heroes) {
                 if (hero.getHp() > 0) {
                     do {
@@ -100,9 +104,8 @@ public class Fight {
 
     }
 
+    // fighting portion of a round between one monster and one hero
     private void faceOff(Hero hero, Monster monster) {
-        // menu with options
-
         String input;
         do {
             input = utils.getStringInput(faceOffPrompt(hero, monster),
@@ -137,6 +140,7 @@ public class Fight {
 
     }
 
+    // boolean if choice is valid for that hero
     private boolean validHeroChoice(String choice, Hero hero) {
         if (choice.equalsIgnoreCase("attack")) {
             return true;
@@ -161,6 +165,7 @@ public class Fight {
         hero.castSpell(selectSpell(hero), monster);
     }
 
+    // select potion from heroes inventory
     private int selectPotion(Hero hero) {
         System.out.println("Please select potion to drink from the menu:");
         List<Potion> heroPotions = hero.getPotions();
@@ -170,6 +175,7 @@ public class Fight {
         return utils.getIntInput("", new RangeChecker(0, heroPotions.size() - 1));
     }
 
+    // select spell from heroes inventory
     private int selectSpell(Hero hero) {
         System.out.println("Please select spell to cast from the menu:");
         List<Spell> heroSpells = hero.getSpells();

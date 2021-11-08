@@ -1,6 +1,7 @@
 import java.util.List;
 
 public class StringInListChecker implements StringChecker {
+    // checks if entered string exists in a list or not
     public static final String DEFAULT_ERROR_MESSAGE = "String entered not valid!";
     String errorMessage;
     List<String> validStrings;
@@ -14,6 +15,7 @@ public class StringInListChecker implements StringChecker {
         this.errorMessage = errorMessage;
     }
 
+    // that string better be in the list!
     public boolean check(String input) {
         boolean check = validStrings.stream().anyMatch(input::equalsIgnoreCase);
         if (!check) {

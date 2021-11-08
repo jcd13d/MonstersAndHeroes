@@ -1,6 +1,8 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Monster extends Player implements BadGuy {
+    // monster class
+
     String name;
     String type;
     double hp;
@@ -19,18 +21,22 @@ public class Monster extends Player implements BadGuy {
         this.type = monsterType;
     }
 
+    // handles attacking a hero
     public void attack(Hero hero) {
         double attackMultiplier = .5;
         double dmg = damage * attackMultiplier;
         boolean attkSuccessful = hero.inflictDamage(dmg);
+
         if (attkSuccessful) {
             System.out.printf("%s inflicted %s damage on %s!!\n", this.getName(), dmg, hero.getName());
         }
     }
 
+    // getting attacked by hero
     public boolean inflictDamage(double dmg, boolean bypassDodge) {
         double dodgeChanceMultiplier = 0.01;
         double randNum = ThreadLocalRandom.current().nextInt(0, 1000) / (double) 1000;
+
         if ((randNum < dodgeChance*dodgeChanceMultiplier) & !bypassDodge) {
             System.out.println("Monster dodged hero attack!");
             return false;
@@ -66,6 +72,7 @@ public class Monster extends Player implements BadGuy {
     }
 
     public void setHp(double hp) {
+        // cant have neg HP
         if (hp >= 0) {
             this.hp = hp;
         } else {
@@ -86,7 +93,6 @@ public class Monster extends Player implements BadGuy {
     }
 
     public void setDamage(double damage) {
-        // TODO error checking, floor to damage of zero?
         this.damage = damage;
     }
 
@@ -95,7 +101,6 @@ public class Monster extends Player implements BadGuy {
     }
 
     public void setDefense(double defense) {
-        // TODO error checking, floor to damage of zero?
         this.defense = defense;
     }
 
@@ -104,7 +109,6 @@ public class Monster extends Player implements BadGuy {
     }
 
     public void setDodgeChance(double dodgeChance) {
-        // TODO error checking, floor to damage of zero?
         this.dodgeChance = dodgeChance;
     }
 

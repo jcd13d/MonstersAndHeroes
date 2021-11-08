@@ -1,7 +1,8 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GameBoard {
+    // class representing the game board for M and H
+
     private static final int DEFAULT_BOARD_SIZE = 8;
     private int boardRows;
     private int boardCols;
@@ -28,6 +29,7 @@ public class GameBoard {
         board[curPlayerPos[0]][curPlayerPos[1]].setBoardState(BoardCell.AVAILABLE);
     }
 
+    // initialize baord with a cell in each location
     private void initBoard() {
         for (int i=0; i < boardRows; i++) {
             for (int j = 0; j < boardCols; j++) {
@@ -39,6 +41,7 @@ public class GameBoard {
         }
     }
 
+    // helper function to tell if players can move anywhere upon creation of the board (make sure they are not trapped)
     private boolean canPlayersMove() {
         if (rowInBoard(curPlayerPos[0] - 1)) {
             if (!board[curPlayerPos[0] - 1][curPlayerPos[1]].getBoardState().equalsIgnoreCase(BoardCell.BLOCKED)) {
@@ -71,10 +74,12 @@ public class GameBoard {
         return (col < boardCols) & (col >= 0);
     }
 
+    // move heroes into destination passed
     private boolean playerMoveHelper(int[] destination) {
         return board[destination[0]][destination[1]].movePlayerToCell(board[curPlayerPos[0]][curPlayerPos[1]].getHeroes());
     }
 
+    // remove heroes from cell and move to new destination
     private void removeHerosHelper(int[] destination) {
         BoardCell currentCell = board[curPlayerPos[0]][curPlayerPos[1]];
         BoardCell destCell = board[destination[0]][destination[1]];
@@ -84,6 +89,7 @@ public class GameBoard {
         setCurPlayerPos(destination);
     }
 
+    // move heroes to specified destination - check that that destination is adjacent first!
     public boolean moveHeroes(int[] destination) {
         // check cell to left if in board, if this cell is dest, true
         boolean status = false;

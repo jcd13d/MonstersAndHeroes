@@ -1,4 +1,5 @@
 public class LightningSpellDecorator extends SpellDecorator {
+    // add lightining functionality to a spell
     double monsterDodgeReduction;
 
     public LightningSpellDecorator(Spell spell, String spellName, double monsterDodgeReduction) {
@@ -18,7 +19,6 @@ public class LightningSpellDecorator extends SpellDecorator {
     }
 
     public void setMonsterDodgeReduction(double monsterDodgeReduction) {
-        // TODO error checking?
         this.monsterDodgeReduction = monsterDodgeReduction;
     }
 }

@@ -9,9 +9,11 @@ public class SpellFactory extends HaMFactory {
     private ArrayList<SpellConfig> config;
 
     public SpellFactory() {
+        // factory to generate spells
         setFactoryName("Spells");
         config = new ArrayList<>();
 
+        // general OS
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path firePath = Paths.get(currentPath.toString(), "configs", "FireSpells.txt");
         Path icePath = Paths.get(currentPath.toString(), "configs", "IceSpells.txt");
@@ -23,6 +25,7 @@ public class SpellFactory extends HaMFactory {
                 lightPath.toString()
         };
 
+        // make helper config objects
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
@@ -80,6 +83,7 @@ public class SpellFactory extends HaMFactory {
         }
     }
 
+    // helper class to make init spells easier
     private class SpellConfig {
         public String name;
         public double cost;
@@ -109,6 +113,7 @@ public class SpellFactory extends HaMFactory {
         }
     }
 
+    // for more informative menus
     public String getSpecialString(String spellType) {
         if (spellType.equalsIgnoreCase("FireSpells")) {
             return "also reduces defensse of the enemy";
@@ -119,11 +124,6 @@ public class SpellFactory extends HaMFactory {
         } else {
             return "";
         }
-    }
-
-    public static void main(String[] args) {
-        SpellFactory factory = new SpellFactory();
-        factory.pringSpellMenu();
     }
 
 }

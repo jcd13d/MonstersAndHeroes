@@ -1,4 +1,6 @@
 public class IceSpellDecorator extends SpellDecorator{
+    // add ice functionality to a spell
+
     double monsterDmgReduction;
 
     public IceSpellDecorator(Spell spell, String spellName, double monsterDmgReduction) {

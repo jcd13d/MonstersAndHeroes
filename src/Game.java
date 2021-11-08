@@ -1,4 +1,6 @@
 public abstract class Game {
+    // class for all games
+
     private String name;
     protected Utils utils;
 

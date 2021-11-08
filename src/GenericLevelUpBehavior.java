@@ -1,4 +1,5 @@
 public class GenericLevelUpBehavior implements LevelUpBehavior {
+    // logic for a general level up - strategy pattern
     public static final double PCT_INC = 1.05;
     public void levelUp(Hero hero) {
         hero.setLevel(hero.getLevel() + 1);

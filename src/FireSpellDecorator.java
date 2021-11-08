@@ -1,4 +1,5 @@
 public class FireSpellDecorator extends SpellDecorator{
+    // decorator to add fire functionality to spell
     double monsterDefenseReduction;
 
     public FireSpellDecorator(Spell spell, String spellName, double monsterDefenseReduction) {

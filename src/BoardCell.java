@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardCell {
+    // Class defining each cell on a game board
+
     public static final double P_BLOCKED = .2;
     public static final double P_MARKET = .3;
     public static final double P_AVAILABLE = .5;
@@ -15,6 +17,7 @@ public class BoardCell {
     private boolean playerCell;
     private ArrayList<Hero> heroes;
 
+    // initializing the state of the cell - defines most game flow
     public BoardCell() {
         double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
         if (randNum < P_BLOCKED) {
@@ -26,6 +29,7 @@ public class BoardCell {
         }
     }
 
+    // main method for moving heroes into the cell, decides what kind of gameplay you see probabilistically
     public boolean movePlayerToCell(ArrayList<Hero> heroes) {
         if (boardState.equalsIgnoreCase(BLOCKED)) {
             return false;
@@ -35,7 +39,6 @@ public class BoardCell {
             market.marketMenus(heroes);
             return true;
         } else if (boardState.equalsIgnoreCase(AVAILABLE)) {
-            // TODO players come into board space, probabilistically fight
             double randNum = ThreadLocalRandom.current().nextInt(0, DECIMAL_PLACE_RAND_NUM) / (double) DECIMAL_PLACE_RAND_NUM;
             if (randNum < P_FIGHT) {
                 Fight fight = new Fight(heroes);

@@ -5,12 +5,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class PotionFactory extends HaMFactory{
+    // factory for creating potions
+
     private int numPotions;
     private ArrayList<PotionConfig> config;
 
     public PotionFactory() {
         setFactoryName("Potions");
         config = new ArrayList<>();
+
+        // OS general
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path potionsPath = Paths.get(currentPath.toString(), "configs", "Potions.txt");
 
@@ -18,6 +22,7 @@ public class PotionFactory extends HaMFactory{
                 potionsPath.toString()
         };
 
+        // init helper objects
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
@@ -74,6 +79,7 @@ public class PotionFactory extends HaMFactory{
         }
     }
 
+    // helper object to make init easier
     private class PotionConfig {
         public String name;
         public double cost;
@@ -97,6 +103,7 @@ public class PotionFactory extends HaMFactory{
         }
     }
 
+    // for better info in menus
     public String getSpecialString(String name) {
         if (name.equalsIgnoreCase("healing_potion")) {
             return "Increases health";

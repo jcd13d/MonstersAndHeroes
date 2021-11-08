@@ -7,7 +7,6 @@ U64306920
 
 Files
 -------------------------------------------------------------------------------------------------
-<.java file> - <1 line comment about the file 
 AmbrosiaPotion.Java - Ambrosia subclass of potion with unique to Ambrosia logic
 Armor.Java - General class for armor
 ArmorFactory.Java - Factory to produce armor
@@ -23,7 +22,7 @@ GenericLevelUpBehavior.Java - generic level up (default before enhanced by speci
 HaMFactory.Java - abstract factory all factories inherit from
 HaMGame.Java - heroes and monsters game class, contains game logic
 HealingPotion.Java - class for healing potions
-Hero.Java - class holding general hero attribues and logic
+Hero.Java - class holding general hero attributes and logic
 HeroFactory.Java - factory that produces heroes requested
 IceSpellDecorator.Java - decorator that adds ice spell functionality to spells
 IntChecker.Java - interface to define what methods int checkers need - passed to I/O methods to ensure valid inputs are made
@@ -64,7 +63,8 @@ Notes:
 1. Files to be parsed should be stored in config directory for parser class to read class
 2. Bonus Done
     * Strategy pattern to pass checker methods to I/O functions and describe level up behavior for heros
-    * Factory pattern to create objects
+        * ex. StringInListChecker used in Utils.getStringInput()
+    * Factory pattern to create objects, multiple files with "Factory" in the name
     * Decorator pattern to enhance spell functionality to fire, lightning and ice spells
 3. Things instructions to note
     * edits to attribute impact to improve playability

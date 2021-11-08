@@ -1,4 +1,5 @@
 public class MermaidTearsPotion extends Potion {
+    // MT specific logic
 
     public MermaidTearsPotion(String name, double cost, double reqLevel, double attributeIncrease) {
         super(name, cost, reqLevel, attributeIncrease);

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WeaponFactory extends HaMFactory {
+    // factory that creates weapons (dangerous)
+
     private int numWeapons;
     private ArrayList<WeaponConfig> config;
 
@@ -13,6 +15,7 @@ public class WeaponFactory extends HaMFactory {
         setFactoryName("Weapons");
         config = new ArrayList<>();
 
+        // all OS
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path weaponPath = Paths.get(currentPath.toString(), "configs", "Weaponry.txt");
 
@@ -20,6 +23,7 @@ public class WeaponFactory extends HaMFactory {
                 weaponPath.toString()
         };
 
+        // load helper objects
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
@@ -59,6 +63,7 @@ public class WeaponFactory extends HaMFactory {
         return new Weapon(name, cost, reqLevel, damage, reqHands);
     }
 
+    // helper class to make init easier
     private class WeaponConfig {
         public String name;
         public double cost;
@@ -90,11 +95,6 @@ public class WeaponFactory extends HaMFactory {
 
     public void setNumWeapons(int numWeapons) {
         this.numWeapons = numWeapons;
-    }
-
-    public static void main(String[] args) {
-        WeaponFactory factory = new WeaponFactory();
-        factory.printWeaponMenu();
     }
 
 }

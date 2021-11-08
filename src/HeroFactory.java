@@ -8,13 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HeroFactory extends HaMFactory {
-//    private HashMap<String, HeroConfig> config;
+    // factory to produce heroes
+
     private ArrayList<HeroConfig> config;
     private int numHeroes;
 
     public HeroFactory() {
         config = new ArrayList<>();
 
+        // OS agnostic config read
         Path currentPath = Paths.get(System.getProperty("user.dir"));
         Path warriorPath = Paths.get(currentPath.toString(), "configs", "Warriors.txt");
         Path sorcererPath = Paths.get(currentPath.toString(), "configs", "Sorcerers.txt");
@@ -26,6 +28,7 @@ public class HeroFactory extends HaMFactory {
                 paladinPath.toString()
         };
 
+        // read from config and load config objects that aid object creation
         ArrayList<String[]> fileContents = new ArrayList<>();
         String[] line;
         File path;
@@ -77,7 +80,6 @@ public class HeroFactory extends HaMFactory {
 
     public Hero getHeroByIndex(int heroNumber) {
         HeroConfig cfg = config.get(heroNumber);
-        // TODO need to figure out defense
         return getHero(cfg.name, cfg.mana, cfg.strength, cfg.agility, cfg.dexterity, cfg.money, cfg.exp,
                 100, 100, cfg.exp, cfg.category);
     }
@@ -86,6 +88,7 @@ public class HeroFactory extends HaMFactory {
         return numHeroes;
     }
 
+    // class to aid in reading in configs and then init heroes
     private class HeroConfig {
         public String name;
         public double mana;
@@ -120,11 +123,5 @@ public class HeroFactory extends HaMFactory {
                     ", category='" + category + '\'';
         }
     }
-
-    public static void main(String[] args) {
-        HeroFactory factory = new HeroFactory();
-        factory.printPlayerMenu();
-    }
-
 
 }

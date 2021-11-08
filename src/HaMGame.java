@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HaMGame extends Game {
+    // Class for H and M game logic
+
     public final static int MAX_HEROES = 5;
     public final static int MIN_HEROES = 1;
     private final static Map<String, int[]> moveMapping;
+
+    // map move to arrays that can be used mathematically
     static {
         moveMapping = new HashMap<>();
         moveMapping.put("w", new int[]{-1, 0});
@@ -14,6 +18,7 @@ public class HaMGame extends Game {
         moveMapping.put("s", new int[]{1, 0});
         moveMapping.put("d", new int[]{0, 1});
     }
+
     int num_players;
     HeroFactory heroFactory;
     ArrayList<Hero> heroes;
@@ -26,19 +31,19 @@ public class HaMGame extends Game {
         heroFactory = new HeroFactory();
     }
 
+    // single method that starts and plays the game
     public void playGame() {
-        // do game logic while the player does not quit
         gameLogic();
-
-        boolean turnStatus;
     }
 
+    // game logic defined
     private void gameLogic() {
         String turnInput;
 
+        // set up the game
         gameSetup();
 
-        // do player turns (each move) until
+        // do player turns (each move) until quit
         do {
             System.out.println(board);
             System.out.println(turnInputPrompt());
@@ -47,9 +52,10 @@ public class HaMGame extends Game {
             if (!playerTurn(turnInput)) {
                 System.out.println("Invalid Move!");
             }
-        } while (!turnInput.equalsIgnoreCase("q")); // TODO or lose condition?
+        } while (!turnInput.equalsIgnoreCase("q"));
     }
 
+    // logic for a game turn (moving on the board)
     private boolean playerTurn(String turnInput) {
         // one turn worth of logic
         if (turnInput.equalsIgnoreCase("q")) {
@@ -63,6 +69,7 @@ public class HaMGame extends Game {
         return board.moveHeroes(destinationHelper(moveMapping.get(turnInput)));
     }
 
+    // general setup that needs to happen once
     private void gameSetup() {
         // setup game, num players etc
         num_players = utils.getIntInput(numPlayersPrompt(), new RangeChecker(MIN_HEROES, MAX_HEROES));
@@ -79,6 +86,7 @@ public class HaMGame extends Game {
         board = new GameBoard(heroes);
     }
 
+    // calculates destination based on move input
     private int[] destinationHelper(int[] move) {
         int[] dest = new int[2];
         int[] curPos = board.getCurPlayerPos();
@@ -105,11 +113,6 @@ public class HaMGame extends Game {
         str = str + "q: Quit\n";
         str = str + "i: Show Information\n";
         return str;
-    }
-
-    public static void main(String[] args) {
-        Game game = new HaMGame();
-        game.playGame();
     }
 
 }

@@ -1,4 +1,5 @@
 public class Armor extends Item {
+    // Class for Armor objects
 
     double dmgReduction;
 

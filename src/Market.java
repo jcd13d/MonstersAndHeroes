@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Market {
+    // class to handle market logic and state
 
     Utils utils = new Utils();
     WeaponFactory weaponFactory;
@@ -9,6 +10,7 @@ public class Market {
     ArmorFactory armorFactory;
     PotionFactory potionFactory;
 
+    // market has factories to give you products!
     public Market() {
         weaponFactory = new WeaponFactory();
         spellFactory = new SpellFactory();
@@ -16,12 +18,14 @@ public class Market {
         potionFactory = new PotionFactory();
     }
 
+    // give each hero a chance to attend the market
     public void marketMenus(ArrayList<Hero> heroes) {
         for (Hero h : heroes) {
             marketMenu(h);
         }
     }
 
+    // Root of market menu
     public void marketMenu(Hero hero) {
         String s = "";
         s = s + String.format("Buying for hero %s \n", hero);
@@ -148,17 +152,6 @@ public class Market {
 
     private String menuPrompt(int exitNum) {
         return String.format("Please choose which number item you wish to buy. To exit type '%s'", exitNum);
-    }
-
-    public static void main(String[] args) {
-        Market market = new Market();
-        HeroFactory hf = new HeroFactory();
-        Hero h = hf.getHeroByIndex(2);
-        Hero h2 = hf.getHeroByIndex(3);
-        ArrayList<Hero> heroes = new ArrayList<>();
-        heroes.add(h);
-        heroes.add(h2);
-        market.marketMenus(heroes);
     }
 
 }
