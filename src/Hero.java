@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Hero {
+public abstract class Hero extends Player{
     private Utils utils = new Utils();
     private String name;
     private double mana;

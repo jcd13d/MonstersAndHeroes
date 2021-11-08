@@ -1,6 +1,6 @@
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Monster implements BadGuy {
+public class Monster extends Player implements BadGuy {
     String name;
     String type;
     double hp;
