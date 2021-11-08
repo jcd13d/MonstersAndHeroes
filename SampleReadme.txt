@@ -61,10 +61,18 @@ WeaponFactory.Java - factory that produces weapons
 
 Notes:
 -------------------------------------------------------------------------------------------------
-1. Files to be parsed should be stored in ConfigFiles, for parser class to read class
+1. Files to be parsed should be stored in config directory for parser class to read class
 2. Bonus Done
+    * Strategy pattern to pass checker methods to I/O functions and describe level up behavior for heros
+    * Factory pattern to create objects
+    * Decorator pattern to enhance spell functionality to fire, lightning and ice spells
 3. Things instructions to note
-
+    * edits to attribute impact to improve playability
+        * hero dodge multiplier dropped from .002 to .001 (.002 gives 100% chance of dodge if attribute >= 500)
+        * defense impact for monster dropped 80%
+        * monster offensive damage reduced 50%
+        * increased hero attack multiplier from .05 to .1
+        * spell damaged dropped to 20% of original value
 
 How to run:
 -------------------------------------------------------------------------------------------------

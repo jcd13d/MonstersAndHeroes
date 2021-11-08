@@ -84,7 +84,6 @@ public class HaMGame extends Game {
         int[] curPos = board.getCurPlayerPos();
         dest[0] = curPos[0] + move[0];
         dest[1] = curPos[1] + move[1];
-        System.out.println(Arrays.toString(dest));
         return dest;
     }
 
