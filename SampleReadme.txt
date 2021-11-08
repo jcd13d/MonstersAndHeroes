@@ -73,6 +73,8 @@ Notes:
         * monster offensive damage reduced 50%
         * increased hero attack multiplier from .05 to .1
         * spell damaged dropped to 20% of original value
+    * written on MacOS
+
 
 How to run:
 -------------------------------------------------------------------------------------------------
